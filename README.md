@@ -1,49 +1,41 @@
 
 
-# TravelBloom ✈️
+# TravelBloom ✈️Travel Recommendation Web Application
 
-A travel recommendation website that helps users discover amazing destinations around the world.
+A fully functional travel recommendation web application that helps users discover amazing destinations worldwide.
 
 ## Features
 
-- **Navigation Bar**: Links to Home, About Us, and Contact Us pages
-- **Search Bar**: Search for destinations by name, country, or keywords
-- **Dynamic Recommendations**: Get real-time destination suggestions based on your search
-- **Social Media Links**: Connect with us on social platforms
-- **Responsive Design**: Works on desktop and mobile devices
-- **Book Now Button**: Quick booking action
+- **Homepage** with hero section and search functionality
+- **About Us** page with team information
+- **Contact Us** page with contact form
+- **Search** destinations by keywords (beach, temple, country names, city names)
+- **Dynamic results** display with images and descriptions
+- **Book Now** functionality
+- **Responsive design** for all devices
+- **Social media** sidebar links
 
 ## Technologies Used
 
 - HTML5
 - CSS3
-- JavaScript (Vanilla)
+- JavaScript (ES6+)
+- Fetch API
+- Font Awesome Icons
 
-## How to Use
+## How to Run
 
-1. Enter a destination name (e.g., "Paris", "Tokyo", "Bali") in the search bar
-2. Click "Search" to see recommendations
-3. Click "Clear" to reset the search
-4. Use the navigation links to learn more about TravelBloom
+1. Clone the repository
+2. Open `index.html` in your browser
+3. Or use Live Server in VS Code
 
-## Live Demo
+## Search Examples
 
-[View Live Site](https:/kgomotso-software-dev
-.github.io/travelbloom/)
+- Type "beach" - Shows beach destinations
+- Type "temple" - Shows temple destinations  
+- Type "Japan" - Shows Japanese cities
+- Type "Tokyo" - Shows specific city
 
-## Sample Destinations
-
-| Destination | Country | Description |
-|-------------|---------|-------------|
-| Paris | France | City of Love and Lights |
-| Tokyo | Japan | Modern city with ancient traditions |
-| New York | USA | The city that never sleeps |
-| Bali | Indonesia | Paradise island with stunning beaches |
-
-## Author
-
-Kgomotso
-
-## License
+## Project Structure
 
 Apache License 2.0
