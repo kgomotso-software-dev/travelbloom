@@ -1,0 +1,80 @@
+{
+  "countries": [
+    {
+      "id": 1,
+      "name": "Japan",
+      "cities": [
+        {
+          "name": "Tokyo",
+          "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400",
+          "description": "A bustling metropolis blending ultramodern and traditional."
+        },
+        {
+          "name": "Kyoto",
+          "imageUrl": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400",
+          "description": "Famous for its classical Buddhist temples and gardens."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Thailand",
+      "cities": [
+        {
+          "name": "Bangkok",
+          "imageUrl": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=400",
+          "description": "Known for vibrant street life and ornate shrines."
+        },
+        {
+          "name": "Phuket",
+          "imageUrl": "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=400",
+          "description": "Famous for its beautiful beaches and crystal clear waters."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Italy",
+      "cities": [
+        {
+          "name": "Rome",
+          "imageUrl": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400",
+          "description": "The Eternal City with ancient history and architecture."
+        },
+        {
+          "name": "Venice",
+          "imageUrl": "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=400",
+          "description": "Romantic city built on canals and bridges."
+        }
+      ]
+    }
+  ],
+  "temples": [
+    {
+      "id": 1,
+      "name": "Angkor Wat",
+      "imageUrl": "https://images.unsplash.com/photo-1551672989-937e6ed69e7d?w=400",
+      "description": "Largest religious monument in the world, located in Cambodia."
+    },
+    {
+      "id": 2,
+      "name": "Taj Mahal",
+      "imageUrl": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400",
+      "description": "Iconic white marble mausoleum in India."
+    }
+  ],
+  "beaches": [
+    {
+      "id": 1,
+      "name": "Bora Bora",
+      "imageUrl": "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=400",
+      "description": "French Polynesian island with stunning turquoise waters."
+    },
+    {
+      "id": 2,
+      "name": "Maldives",
+      "imageUrl": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=400",
+      "description": "Tropical paradise with overwater bungalows."
+    }
+  ]
+}
