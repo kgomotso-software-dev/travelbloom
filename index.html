@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBloom - Explore the World</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            color: #ff6b35;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 0.5rem;
+            background-color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+
+        .search-container input {
+            border: none;
+            padding: 0.5rem;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-container button {
+            background-color: #ff6b35;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .main-content {
+            display: flex;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+        }
+
+        .social-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 1rem;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .social-sidebar a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 4rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .book-btn {
+            background-color: #ff6b35;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .results-section {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-left: 2rem;
+            width: 300px;
+        }
+
+        .results-section h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .result-item {
+            background-color: rgba(255,255,255,0.1);
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">TravelBloom ✈️</div>
+        <div class="nav-links">
+            <a onclick="showHome()">Home</a>
+            <a onclick="showAbout()">About Us</a>
+            <a onclick="showContact()">Contact Us</a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search destinations...">
+            <button onclick="searchDestinations()">Search</button>
+            <button onclick="clearSearch()">Clear</button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="social-sidebar">
+            <a href="#">📘</a>
+            <a href="#">🐦</a>
+            <a href="#">📸</a>
+            <a href="#">🔗</a>
+        </div>
+
+        <div class="hero" id="heroSection">
+            <h1>Explore.<br>Discover.<br>Travel.</h1>
+            <p>Immerse yourself in diverse cultures, breathtaking landscapes, and unforgettable adventures. TravelBloom helps you discover the world's most amazing destinations.</p>
+            <button class="book-btn" onclick="bookNow()">Book Now ✈️</button>
+        </div>
+
+        <div id="resultsSection" class="results-section hidden">
+            <h3>Recommendations</h3>
+            <div id="resultsList"></div>
+        </div>
+    </div>
+
+    <script>
+        const destinations = [
+            { name: "Paris", country: "France", description: "City of Love and Lights" },
+            { name: "Tokyo", country: "Japan", description: "Modern city with ancient traditions" },
+            { name: "New York", country: "USA", description: "The city that never sleeps" },
+            { name: "Rome", country: "Italy", description: "Eternal city of history" },
+            { name: "Bali", country: "Indonesia", description: "Paradise island with stunning beaches" },
+            { name: "Beach", country: "Various", description: "Relax on sandy shores" },
+            { name: "Temple", country: "Various", description: "Discover ancient spiritual sites" },
+            { name: "Mountain", country: "Various", description: "Hike through breathtaking ranges" }
+        ];
+
+        function searchDestinations() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!query) {
+                document.getElementById('resultsSection').classList.add('hidden');
+                return;
+            }
+            const filtered = destinations.filter(d => d.name.toLowerCase().includes(query) || d.country.toLowerCase().includes(query));
+            const resultsList = document.getElementById('resultsList');
+            if (filtered.length === 0) {
+                resultsList.innerHTML = '<p style="color:white;">No destinations found.</p>';
+            } else {
+                resultsList.innerHTML = filtered.map(d => `<div class="result-item"><h4>${d.name}</h4><p>${d.country}</p><p>${d.description}</p></div>`).join('');
+            }
+            document.getElementById('resultsSection').classList.remove('hidden');
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('resultsSection').classList.add('hidden');
+        }
+
+        function bookNow() {
+            alert('Thank you for choosing TravelBloom! Our experts will contact you shortly.');
+        }
+
+        function showHome() {
+            document.getElementById('heroSection').innerHTML = `
+                <h1>Explore.<br>Discover.<br>Travel.</h1>
+                <p>Immerse yourself in diverse cultures, breathtaking landscapes, and unforgettable adventures. TravelBloom helps you discover the world's most amazing destinations.</p>
+                <button class="book-btn" onclick="bookNow()">Book Now ✈️</button>
+            `;
+            clearSearch();
+        }
+
+        function showAbout() {
+            document.getElementById('heroSection').innerHTML = `
+                <h1>About TravelBloom</h1>
+                <p>We are passionate travelers dedicated to helping you discover amazing destinations worldwide. Our team curates the best travel experiences.</p>
+                <p>🌍 50+ Countries &nbsp;|&nbsp; ✈️ 1000+ Travelers &nbsp;|&nbsp; ⭐ 5-Star Service</p>
+            `;
+            clearSearch();
+        }
+
+        function showContact() {
+            document.getElementById('heroSection').innerHTML = `
+                <h1>Contact Us</h1>
+                <p>📧 Email: hello@travelbloom.com</p>
+                <p>📞 Phone: +1 (555) 123-4567</p>
+                <p>📍 Address: 123 Travel Street, Adventure City</p>
+            `;
+            clearSearch();
+        }
+    </script>
+</body>
+</html>
